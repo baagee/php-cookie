@@ -14,6 +14,8 @@ namespace BaAGee\Cookie\Base;
  */
 abstract class CookieAbstract
 {
+    use ProhibitNewClone;
+    
     /**
      * @var bool 是否完成初始化了
      */

@@ -127,9 +127,9 @@ final class Cookie extends CookieAbstract
             if (!empty(self::$config['encryptkey'])) {
                 $value = self::secure($value, self::$config['encryptkey'], 'DECODE');
             }
-        }
-        if ($res = json_decode($value, true)) {
-            $value = $res;
+            if ($res = json_decode(strval($value), true)) {
+                $value = $res;
+            }
         }
         return $value == '' ? null : $value;
     }
