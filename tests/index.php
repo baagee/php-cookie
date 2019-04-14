@@ -1,8 +1,10 @@
-# php-cookie
-PHP Cookie library
-
-# 示例
-```php
+<?php
+/**
+ * Desc:
+ * User: baagee
+ * Date: 2019/4/14
+ * Time: 20:10
+ */
 include __DIR__ . '/../vendor/autoload.php';
 
 $config = [
@@ -51,4 +53,3 @@ var_dump(\BaAGee\Cookie\Cookie::get());
 // 获取，默认返回已经decode之后的数组
 var_dump(\BaAGee\Cookie\Cookie::get('arr'));
 echo 'over';
-```

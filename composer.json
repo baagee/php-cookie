@@ -1,0 +1,26 @@
+{
+  "name": "baagee/php-cookie",
+  "description": "PHP Cookie library",
+  "type": "library",
+  "license": "MIT",
+  "keywords": [
+    "PHP",
+    "Cookie"
+  ],
+  "authors": [
+    {
+      "name": "BaAGee",
+      "email": "2274313786@qq.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.1"
+  },
+  "suggest": {
+  },
+  "autoload": {
+    "psr-4": {
+      "BaAGee\\Cookie\\": "src/"
+    }
+  }
+}
