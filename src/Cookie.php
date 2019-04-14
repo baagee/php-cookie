@@ -18,7 +18,6 @@ final class Cookie extends CookieAbstract
 {
     /**
      * Cookie 设置、获取、删除
-     * @access public
      * @param  string $name   cookie 名称
      * @param  mixed  $value  cookie 值
      * @param  mixed  $option 可选参数 可能会是 null|integer|string
@@ -33,9 +32,6 @@ final class Cookie extends CookieAbstract
                 $option = ['expire' => $option];
             } elseif (is_string($option)) {
                 parse_str($option, $option);
-                $config = array_merge(self::$config, array_change_key_case($option));
-
-                // var_dump($config);die;
             }
             $config = array_merge(self::$config, array_change_key_case($option));
         } else {
@@ -59,7 +55,6 @@ final class Cookie extends CookieAbstract
 
     /**
      * 永久保存 Cookie 数据
-     * @access public
      * @param  string $name   cookie 名称
      * @param  mixed  $value  cookie 值
      * @param  mixed  $option 可选参数 可能会是 null|integer|string
@@ -76,7 +71,6 @@ final class Cookie extends CookieAbstract
 
     /**
      * 判断是否有 Cookie 数据
-     * @access public
      * @param  string      $name   cookie 名称
      * @param  string|null $prefix cookie 前缀
      * @return bool
@@ -90,7 +84,6 @@ final class Cookie extends CookieAbstract
 
     /**
      * 获取 Cookie 的值
-     * @access public
      * @param string      $name   cookie 名称
      * @param string|null $prefix cookie 前缀
      * @return mixed
@@ -136,7 +129,6 @@ final class Cookie extends CookieAbstract
 
     /**
      * 删除 Cookie
-     * @access public
      * @param  string      $name   cookie 名称
      * @param  string|null $prefix cookie 前缀
      * @return void
@@ -160,7 +152,6 @@ final class Cookie extends CookieAbstract
 
     /**
      * 清除指定前缀的所有 cookie
-     * @access public
      * @param  string|null $prefix cookie 前缀
      * @return void
      */
