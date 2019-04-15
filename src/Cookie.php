@@ -136,18 +136,9 @@ final class Cookie extends CookieAbstract
     public static function delete($name, $prefix = null)
     {
         !isset(self::$init) && self::init();
-        $config = self::$config;
-        $prefix = !is_null($prefix) ? $prefix : $config['prefix'];
+        $prefix = !is_null($prefix) ? $prefix : self::$config['prefix'];
         $name   = $prefix . $name;
-
-        if ($config['setcookie']) {
-            setcookie(
-                $name, '', $_SERVER['REQUEST_TIME'] - 3600, $config['path'],
-                $config['domain'], $config['secure'], $config['httponly']
-            );
-        }
-        // 删除指定 cookie
-        unset($_COOKIE[$name]);
+        self::realDelete($name);
     }
 
     /**
@@ -162,20 +153,32 @@ final class Cookie extends CookieAbstract
         }
         !isset(self::$init) && self::init();
         // 要删除的 cookie 前缀，不指定则删除 config 设置的指定前缀
-        $config = self::$config;
-        $prefix = !is_null($prefix) ? $prefix : $config['prefix'];
+        $prefix = !is_null($prefix) ? $prefix : self::$config['prefix'];
         if ($prefix) {
             foreach ($_COOKIE as $key => $val) {
                 if (0 === strpos($key, $prefix)) {
-                    if ($config['setcookie']) {
-                        setcookie(
-                            $key, '', $_SERVER['REQUEST_TIME'] - 3600, $config['path'],
-                            $config['domain'], $config['secure'], $config['httponly']
-                        );
-                    }
-                    unset($_COOKIE[$key]);
+                    self::realDelete($key);
                 }
             }
+        } else {
+            foreach ($_COOKIE as $key => $val) {
+                self::realDelete($key);
+            }
         }
+    }
+
+    /**
+     * 真正的删除
+     * @param $key
+     */
+    private static function realDelete($key)
+    {
+        if (self::$config['setcookie']) {
+            setcookie(
+                $key, '', $_SERVER['REQUEST_TIME'] - 3600, self::$config['path'],
+                self::$config['domain'], self::$config['secure'], self::$config['httponly']
+            );
+        }
+        unset($_COOKIE[$key]);
     }
 }

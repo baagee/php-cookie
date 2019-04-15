@@ -15,7 +15,7 @@ namespace BaAGee\Cookie\Base;
 abstract class CookieAbstract
 {
     use ProhibitNewClone;
-    
+
     /**
      * @var bool 是否完成初始化了
      */
@@ -71,7 +71,7 @@ abstract class CookieAbstract
      * @param string $key       密钥
      * @return bool|string
      */
-    protected function secure($string, $key, $operation = 'DECODE')
+    protected static function secure($string, $key, $operation = 'DECODE')
     {
         $ckey_length   = 4; // 随机密钥长度 取值 0-32;
         $key           = md5($key);

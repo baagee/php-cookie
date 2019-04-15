@@ -22,11 +22,15 @@ $config = [
 // 获取
 var_dump(\BaAGee\Cookie\Cookie::get('name'));
 //设置
+\BaAGee\Cookie\Cookie::prefix('test2_');
 \BaAGee\Cookie\Cookie::set('name', '很健康');
 // 获取
 var_dump(\BaAGee\Cookie\Cookie::get('name'));
 // 清空
-\BaAGee\Cookie\Cookie::clear();
+// var_dump($_COOKIE);
+\BaAGee\Cookie\Cookie::clear('test2_');
+// var_dump($_COOKIE);
+
 // 获取所有
 var_dump(\BaAGee\Cookie\Cookie::get());
 
